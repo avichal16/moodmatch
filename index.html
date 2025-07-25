@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MoodMatch - Onboarding</title>
+  <title>MoodMatch</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800" />
+  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" 
+    href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800" />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script defer src="script.js"></script>
 </head>
@@ -16,20 +17,41 @@
     <h2 class="text-lg font-bold text-[#1b0e0e]">MoodMatch</h2>
     <nav class="flex gap-8 text-sm font-medium text-[#1b0e0e]">
       <a href="index.html">Home</a>
-      <a href="recommendations.html">Discover</a>
       <a href="watchlist.html">Watchlist</a>
     </nav>
   </header>
 
   <!-- Content -->
-  <main class="flex flex-col items-center py-10 max-w-[512px] mx-auto">
-    <h2 class="text-[28px] font-bold text-center mb-5">Tell us what you loved recently</h2>
+  <main class="flex flex-col items-center py-10 max-w-[960px] mx-auto">
+    <h2 class="text-[28px] font-bold text-center mb-6">Find Movies & Books by Mood</h2>
+
+    <!-- Search -->
     <div class="w-full px-4">
-      <input id="searchInput" placeholder="Search for movies, series, or books" class="w-full p-3 rounded-xl bg-[#f3e7e8] text-[#1b0e0e] placeholder-[#994d51] focus:outline-none" />
+      <input id="searchInput" placeholder="Search for movies, series, or books" 
+        class="w-full p-3 rounded-xl bg-[#f3e7e8] text-[#1b0e0e] placeholder-[#994d51] focus:outline-none" />
       <ul id="searchResults" class="mt-2 bg-white rounded-xl border"></ul>
     </div>
     <ul id="selectedList" class="mt-5 flex gap-3 flex-wrap"></ul>
-    <button id="continueButton" class="mt-6 px-6 py-3 bg-[#e92932] text-white rounded-full font-bold">Continue</button>
+
+    <!-- Tags -->
+    <h3 class="text-lg font-bold mt-8">Select up to 5 Tags</h3>
+    <div id="tagOptions" class="flex gap-3 flex-wrap mt-3 px-4"></div>
+
+    <!-- Emojis -->
+    <h3 class="text-lg font-bold mt-8">How did it make you feel?</h3>
+    <div id="emojiOptions" class="flex gap-3 flex-wrap mt-3 px-4"></div>
+
+    <!-- Button -->
+    <button id="recommendButton" class="mt-6 px-6 py-3 bg-[#e92932] text-white rounded-full font-bold">
+      Get Recommendations
+    </button>
+
+    <!-- Recommendations -->
+    <section class="mt-10 w-full">
+      <h2 class="text-[24px] font-bold mb-4 px-4">MoodMatch Recommendations</h2>
+      <div id="recommendationList" class="flex flex-wrap gap-4 px-4"></div>
+    </section>
   </main>
 </body>
 </html>
+
