@@ -1,5 +1,5 @@
 // Insert your TMDB API key here
-const TMDB_API_KEY = "YOUR_TMDB_KEY_HERE";
+const TMDB_API_KEY = "c5bb9a766bdc90fcc8f7293f6cd9c26a";
 
 const searchInput = document.getElementById("searchInput");
 const selectedList = document.getElementById("selectedList");
