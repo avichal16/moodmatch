@@ -121,14 +121,51 @@ document.getElementById("recommendButton").addEventListener("click", () => {
 async function fetchRecommendations() {
   recommendationList.innerHTML = "";
 
-  // Map tags to keywords (simplified)
-  const keywordMap = {
-    Philosophical: "drama",
-    Wholesome: "family",
-    Dark: "thriller",
-    Funny: "comedy",
-    "Action-packed": "action"
+  // Map tags to TMDB genre IDs
+  const genreMap = {
+    Philosophical: 18,       // Drama
+    Wholesome: 10751,        // Family
+    Dark: 53,                // Thriller
+    Funny: 35,               // Comedy
+    "Action-packed": 28      // Action
   };
+
+  // Collect genres from selected tags
+  const genreIds = selectedTags.map(tag => genreMap[tag]).filter(Boolean).join(",");
+
+  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=${genreIds}`;
+
+  try {
+    const resp = await fetch(url);
+    const data = await resp.json();
+
+    const results = (data.results || []).slice(0, 6);
+
+    if (!results.length) {
+      recommendationList.innerHTML = "<p>No matches found. Try different moods!</p>";
+      return;
+    }
+
+    results.forEach(movie => {
+      const div = document.createElement("div");
+      div.className = "p-4 border rounded shadow bg-white";
+      const poster = movie.poster_path
+        ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
+        : "";
+      div.innerHTML = `
+        <img src="${poster}" alt="${movie.title}" class="mb-2 rounded" />
+        <h3 class="font-bold">${movie.title}</h3>
+        <p class="text-sm text-gray-600">${movie.overview || "No description available."}</p>
+        <p class="mt-2 text-xs">Matches your mood: ${selectedTags.join(", ")} ${emojiPicker.value}</p>
+      `;
+      recommendationList.appendChild(div);
+    });
+  } catch (error) {
+    recommendationList.innerHTML = `<p class="text-red-600">Error fetching recommendations. Check your API key.</p>`;
+    console.error("TMDB Fetch Error:", error);
+  }
+}
+
 
   const keywords = selectedTags.map(tag => keywordMap[tag] || "").join(",");
 
