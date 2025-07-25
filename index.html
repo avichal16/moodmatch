@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoodMatch</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.4/dist/tailwind.min.css" rel="stylesheet">
+  <script defer src="script.js"></script>
+</head>
+<body class="bg-slate-50 text-gray-900">
+  <!-- Header -->
+  <header class="p-4 text-center bg-indigo-600 text-white">
+    <h1 class="text-2xl font-bold">MoodMatch</h1>
+    <p class="text-sm">Find movies, shows, and books based on your mood</p>
+  </header>
+
+  <!-- Onboarding Section -->
+  <main class="p-6 max-w-2xl mx-auto">
+    <section id="onboarding">
+      <h2 class="text-xl font-semibold mb-2">Tell us what you loved recently</h2>
+      <input id="searchInput" type="text" placeholder="Search movies or books..." 
+        class="w-full p-2 border rounded mb-4" />
+      <button id="addButton" class="px-4 py-2 bg-indigo-500 text-white rounded">Add</button>
+      <ul id="selectedList" class="mt-4 space-y-2"></ul>
+      <button id="nextButton" class="mt-4 px-4 py-2 bg-green-500 text-white rounded">Next</button>
+    </section>
+
+    <!-- Tag & Emoji Selection -->
+    <section id="tagEmojiSection" class="hidden">
+      <h2 class="text-xl font-semibold mb-2">Pick your mood</h2>
+      <div id="tags" class="flex flex-wrap gap-2 mb-4"></div>
+      <div>
+        <label class="block mb-2">Pick an Emoji:</label>
+        <select id="emojiPicker" class="p-2 border rounded">
+          <option value="🎭">🎭 Philosophical</option>
+          <option value="🌈">🌈 Wholesome</option>
+          <option value="💔">💔 Heartfelt</option>
+          <option value="🤯">🤯 Mind-blowing</option>
+        </select>
+      </div>
+      <button id="recommendButton" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Get Recommendations</button>
+    </section>
+
+    <!-- Recommendations -->
+    <section id="recommendations" class="hidden mt-6">
+      <h2 class="text-xl font-semibold mb-2">Your Mood Matches</h2>
+      <div id="recommendationList" class="space-y-4"></div>
+    </section>
+  </main>
+</body>
+</html>
